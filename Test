@@ -1,0 +1,68 @@
+// screens/MyNewScreen.js
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
+const MyNewScreen = () => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>Welcome to My New Screen!</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 20,
+  },
+});
+
+export default MyNewScreen;
+Add the Screen to Navigation:
+
+Open the AppNavigator.js file (or wherever your navigation is set up) and add the new screen:
+
+javascript
+Copy code
+// navigation/AppNavigator.js
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from '../screens/HomeScreen';
+import MyNewScreen from '../screens/MyNewScreen';
+
+const Stack = createStackNavigator();
+
+const AppNavigator = () => {
+  return (
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="MyNewScreen" component={MyNewScreen} />
+    </Stack.Navigator>
+  );
+};
+
+export default AppNavigator;
+Update Navigation Container:
+
+Ensure your navigation container is set up correctly in App.js:
+
+javascript
+Copy code
+// App.js
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import AppNavigator from './navigation/AppNavigator';
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <AppNavigator />
+    </NavigationContainer>
+  );
+};
+
+export default App;
